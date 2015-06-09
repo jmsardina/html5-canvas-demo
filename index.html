@@ -1,0 +1,41 @@
+<head>
+	<script type="text/javascript" src="assets/javascript/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="assets/javascript/initialize.js"></script>
+	<script type="text/javascript" src="assets/javascript/set-canvases.js"></script>
+	<script type="text/javascript" src="assets/javascript/shared-functions.js"></script>
+	<script type="text/javascript" src="assets/javascript/drawing-demo.js"></script>
+	<script type="text/javascript" src="assets/javascript/coordinates-demo.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/stylesheets/style.css">
+</head>
+	
+<body>
+	<div class="coordinates-demo hidden">
+		<button class="show-drawing-demo">Drawing</button>
+		<button class="eraser">eraser</button>
+
+
+		<div class="legend">
+			<span id="offsetCoordinates">e.offsetX, e.offsetY</span>
+			<span id="clientCoordinates">e.clientX, e.clientY</span>
+			<span id="pageCoordinates">e.pageX, e.pageY</span>
+			<span id="screenCoordinates">e.screenX, e.screenY</span>
+		</div><br>
+
+		<canvas id="grid-layer" width="1200" height="600"></canvas>
+		<canvas id="main-layer" width="1200" height="600"></canvas>
+	</div>
+
+	<div id="main-workspace">
+		<div>
+			<button class="show-coordinates-demo">Coordinates Demo</button>
+			<button class="eraser">eraser</button>
+			<button class="undo">undo</button>
+			<!-- <button class="redo">redo</button> -->
+		</div>
+		
+
+		<canvas id="drawing-canvas" width="1200" height="600"></canvas>
+
+
+	</div>
+</body>

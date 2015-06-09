@@ -1,0 +1,55 @@
+/* BEGIN CANVASES */
+#drawing-canvas {
+	border: 1px solid;
+	height: 600px;
+}
+
+#grid-layer, #main-layer {
+	border: 1px solid;
+	position: absolute;
+/*	float: right;
+	margin-top: 250px;*/
+}
+/* END CANVASES */
+
+/* BEGIN OFFSET TOOLS */
+.legend {
+	font-size: 25px;
+	border: 1px solid black;
+	display: inline-block;
+}
+
+#offsetCoordinates {
+	background-color: black; 
+	color: white;
+}
+
+#clientCoordinates {
+	background-color: green; 
+	color: white;
+}
+
+#pageCoordinates {
+	background-color: red; 
+	color: white;
+}
+
+#screenCoordinates {
+	background-color: blue; 
+	color: white;
+}
+
+.coordinates-demo {
+	height: 100%;
+	width: 100%;
+	color: green;
+}
+
+/* general elements */
+.hidden {
+	display: none;
+}
+
+button {
+	font-size: 25px;
+}
