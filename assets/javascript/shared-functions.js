@@ -10,46 +10,35 @@ function startErasing(){
 	}
 }
 
-function closeWindow(){
-	$(".coordinates-demo").addClass("hidden");
-	$("#main-workspace").removeClass("hidden");
+function changeViews(){
+	$("#main-workspace").toggleClass("hidden");
+	$(".coordinates-demo").toggleClass("hidden");	
 }
 
-function showCoordinatesDemo(){
-	$("#main-workspace").addClass("hidden");
-	$(".coordinates-demo").removeClass("hidden");
-}
-
-function recordHistory(){
-	var canvas = document.getElementById("drawing-canvas");
-	var dataURL = canvas.toDataURL();
-	undoArray.push(dataURL);
-
-	if( undoArray.length >= 10 ){ 
-		undoArray.splice(0, 1);
+	function recordHistory(){
+		var canvas = document.getElementById("drawing-canvas");
+		var dataURL = canvas.toDataURL();
+		undoArray.push(dataURL);
 	}
-}
-
-function undo(){
-    if( undoArray.length >= 1 ){
-      drawingContext.clearRect(0, 0, $("#drawing-canvas").width(), $("#drawing-canvas").height());
-      var image = document.createElement("img");
-   
-      image.setAttribute("src", undoArray.pop());
-      drawingContext.drawImage(image, 0, 0);
-    }
-}
-
-// function redo(){
-// 	debugger
-// }
 
 // function undo(){
-//     if ((redoArray.length === 0) & (undoArray.length >= 1)){
+//     if( undoArray.length >= 1 ){
+//       drawingContext.clearRect(0, 0, $("#drawing-canvas").width(), $("#drawing-canvas").height());
+//       var image = document.createElement("img");
+   
+//       image.setAttribute("src", undoArray.pop());
+//       drawingContext.drawImage(image, 0, 0);
+//     }
+// }
+
+
+// function undo(){
+//     if ( (redoArray.length === 0) & (undoArray.length >= 1) ){
 //       var canvas = document.getElementById("drawing-canvas");
 //       var dataURL = canvas.toDataURL();
 //       redoArray.unshift(dataURL);
 //     }
+
 //     if(undoArray.length >= 1){
 //       drawingContext.clearRect(0, 0, $("#drawing-canvas").width(), $("#drawing-canvas").height());
 //       var image = document.createElement("img");
@@ -58,16 +47,27 @@ function undo(){
 //       image.setAttribute("src", redoArray[0]);
 //       drawingContext.drawImage(image, 0, 0);
 //     }
-//   }
+// }
 
-//   // function redo(){
-//   //   if( redoArray.length >= 1 ){
-//   //     drawingContext.clearRect(0, 0, $("#drawing-canvas").width, $("#drawing-canvas").height);
-//   //     var image = document.createElement("img");
+function undo(){
+    if( undoArray.length >= 1 ){
+      drawingContext.clearRect(0, 0, $("#drawing-canvas").width(), $("#drawing-canvas").height());
+      var image = document.createElement("img");
+   
+      redoArray.unshift(undoArray.pop());
+      image.setAttribute("src", redoArray[0]);
+      drawingContext.drawImage(image, 0, 0);
+    }
+}
 
-//   //     undoArray.push(redoArray.shift())
-//   //     image.setAttribute("src", undoArray[undoArray.length-1]);
-//   //     drawingContext.drawImage(image, 0, 0);
-//   //   }
-//   // }
+function redo(){
+	if( redoArray.length >= 1 ){
+	  drawingContext.clearRect(0, 0, $("#drawing-canvas").width, $("#drawing-canvas").height);
+	  var image = document.createElement("img");
+
+	  undoArray.push(redoArray.shift())
+	  image.setAttribute("src", undoArray[undoArray.length-1]);
+	  drawingContext.drawImage(image, 0, 0);
+	}
+}
 

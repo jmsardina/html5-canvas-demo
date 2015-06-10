@@ -1,5 +1,5 @@
 function setCanvases(){
-	// CANVASES FOR COORDINATES DEMO 
+	// FOR COORDINATES DEMO 
 	var mainLayer = document.getElementById("main-layer");
 	context = mainLayer.getContext("2d");
 
@@ -7,11 +7,16 @@ function setCanvases(){
 	gridContext = gridLayer.getContext("2d");
 	setGrid();
 
-	// CANVASES FOR DRAWING DEMO
+	// FOR DRAWING DEMO
 	var drawingCanvas = document.getElementById("drawing-canvas");	
 	drawingContext = drawingCanvas.getContext("2d");
+
+	// CANVAS SCALED WITH CSS
+	var miscaledCanvas = document.getElementById("miscaled-canvas");
+	miscaledDrawingContext = miscaledCanvas.getContext("2d");
 }
 
+// GRID FOR DRAWING DEMO
 function setGrid(){
 	// begin vertical lines
 	verticalIntervals = new Array();

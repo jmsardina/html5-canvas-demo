@@ -2,10 +2,9 @@ $(function(){
 	setCanvases();
 	addAllListeners();
 
-
-	// drawingContext.lineWidth = 10;
 	coordinatePaint = false;
 	drawingPaint = false;
+	miscaledDrawingPaint = false;
 	undoArray = new Array();
 	recordHistory();
 });
@@ -21,12 +20,16 @@ function addAllListeners(){
 	$("#drawing-canvas").on("mousemove", draw);
 	$("#drawing-canvas").on("mouseup", stopDrawing);
 
+	// BINDING EVENTS TO DRAW ON MISCALED CANVAS
+	$("#miscaled-canvas").on("mousedown", miscaledStart);
+	$("#miscaled-canvas").on("mousemove", miscaledDraw);
+	$("#miscaled-canvas").on("mouseup", miscaledStopDrawing);
+
 	// TO ENABLE DRAWING TOOLS
 	$(".eraser").on("click", startErasing);
 	$("#main-workspace .undo").on("click", undo);
-	$("#main-workspace, .redo").on("click", redo);
+	$("#main-workspace .redo").on("click", redo);
 
-	// TO CHANGE CONTEXT
-	$(".show-drawing-demo").on("click", closeWindow);
-	$(".show-coordinates-demo").on("click", showCoordinatesDemo);
+	// TO CHANGE VIEWS
+	$(".show-drawing-demo, .show-coordinates-demo").on("click", changeViews)
 }

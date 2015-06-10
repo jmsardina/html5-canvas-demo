@@ -10,6 +10,13 @@
 /*	float: right;
 	margin-top: 250px;*/
 }
+
+#miscaled-canvas {
+	border: 1px solid;
+	height: 600px;
+	width: 600px;
+}
+
 /* END CANVASES */
 
 /* BEGIN OFFSET TOOLS */
@@ -51,5 +58,9 @@
 }
 
 button {
-	font-size: 25px;
+	font-size: 20px;
+}
+
+h2 {
+	margin-bottom: 0px;
 }

@@ -5,6 +5,7 @@
 	<script type="text/javascript" src="assets/javascript/shared-functions.js"></script>
 	<script type="text/javascript" src="assets/javascript/drawing-demo.js"></script>
 	<script type="text/javascript" src="assets/javascript/coordinates-demo.js"></script>
+	<script type="text/javascript" src="assets/javascript/miscaled-demo.js"></script>
 	<link rel="stylesheet" type="text/css" href="assets/stylesheets/style.css">
 </head>
 	
@@ -30,12 +31,28 @@
 			<button class="show-coordinates-demo">Coordinates Demo</button>
 			<button class="eraser">eraser</button>
 			<button class="undo">undo</button>
-			<!-- <button class="redo">redo</button> -->
+			<button class="redo">redo</button>
 		</div>
-		
+		<table>
+			<thead>
+				<tr>
+					<th><h2>Scaled with HTML</h2></th>
+					<th><h2>Scaled with CSS</h2></th>
+				</tr>
 
-		<canvas id="drawing-canvas" width="1200" height="600"></canvas>
+			</thead>
 
+			<tr>
+				<td>
+					<canvas id="drawing-canvas" width="600" height="600"></canvas>
+				</td>
+
+				<td>
+					<canvas id="miscaled-canvas"></canvas>
+				</td>
+			</tr>
+
+		</table>
 
 	</div>
 </body>

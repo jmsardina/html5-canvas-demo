@@ -12,7 +12,10 @@ function draw(e){
 	}
 }
 
-function stopDrawing(e){
-	drawingPaint = false;
-	recordHistory();
-}
+	$("#drawing-canvas").on("mouseup", stopDrawing);
+
+	function stopDrawing(e){
+		drawingPaint = false;
+		recordHistory();
+		redoArray = new Array();
+	}
