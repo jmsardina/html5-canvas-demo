@@ -7,8 +7,6 @@
 #grid-layer, #main-layer {
 	border: 1px solid;
 	position: absolute;
-/*	float: right;
-	margin-top: 250px;*/
 }
 
 #miscaled-canvas {

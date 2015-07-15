@@ -1,51 +1,58 @@
-function startAllCoordinates(e){
-	coordinatePaint = true;
+$(function(){
+	var coordinatePaint = false;
+	$("#main-layer").on("mousedown", coordinatesStartDrawing);
+	$("#main-layer").on("mousemove", coordinatesDraw);
+	$("#main-layer").on("mouseup", coordinatesStopDrawing);
 
-	// Record all starting points
-	offsetStart = [e.offsetX, e.offsetY];
-	pageStart = [e.pageX, e.pageY];
-	clientStart = [e.clientX, e.clientY];
-	screenStart = [e.screenX, e.screenY];
-}
+	function coordinatesStartDrawing(e){
+		coordinatePaint = true;
 
-function drawAllCoordinates(e){
-	if (coordinatePaint === true) {
-		context.save();
-		// offsetX, offsetY
-		context.strokeStyle = "black";
-		context.beginPath();
-		context.moveTo(offsetStart[0], offsetStart[1]);
-		context.lineTo(e.offsetX, e.offsetY);
-		context.stroke();
+		// Record all starting points
+		offsetStart = [e.offsetX, e.offsetY];
+		pageStart = [e.pageX, e.pageY];
+		clientStart = [e.clientX, e.clientY];
+		screenStart = [e.screenX, e.screenY];
+		layerStart = [e.layerX, e.layerY];
 
-		// clientX, clientY
-		context.strokeStyle = 'green';
-		context.beginPath();
-		context.moveTo(clientStart[0], clientStart[1])
-		context.lineTo(e.clientX, e.clientY);
-		context.stroke();
-
-		// pageX, pageY
-		context.strokeStyle = 'red';
-		context.beginPath();
-		context.moveTo(pageStart[0], pageStart[1])
-		context.lineTo(e.pageX, e.pageY);
-		context.stroke();
-
-		// screenX, screenY
-		context.strokeStyle = 'blue';
-		context.beginPath();
-		context.moveTo(screenStart[0], screenStart[1])
-		context.lineTo(e.screenX, e.screenY);
-		context.stroke();
+		// For Cross-Browswer Compatibility
+		calculatedStart = [(e.pageX - $(e.target).offset().left), (e.pageY - $(e.target).offset().top)];
 	}
-}
 
-function stopDrawingAllCoordinates(e){
-	coordinatePaint = false;
-}
+	function coordinatesDraw(e){
+		if (coordinatePaint === true) {
+			coordinateStroke(e, "gridContext", "e.offsetX", "e.offsetY", "offsetStart", "black");
+			coordinateStroke(e, "gridContext", "e.clientX", "e.clientY", "clientStart", "green");
+			coordinateStroke(e, "gridContext", "e.pageX", "e.pageY", "pageStart", "red");
+			coordinateStroke(e, "gridContext", "e.screenX", "e.screenY", "screenStart", "blue");
+			coordinateStroke(e, "gridContext", "e.layerX", "e.layerY", "layerStart", "orange");
+			
+			// // For Cross-Browswer Compatibility
+			// coordinateStroke(
+			// 	e, 
+			// 	"gridContext", 
+			// 	"(e.pageX - $(e.target).offset().left)", 
+			// 	"(e.pageY - $(e.target).offset().top)", 
+			// 	"calculatedStart", 
+			// 	"purple"
+			// );
+		}
+	}
 
+	function coordinateStroke(e, ctx, typeX, typeY, start, color){
+		var context = eval(ctx);
+		var xStart = eval(start)[0];
+		var yStart = eval(start)[1];
+		var xEnd = eval(typeX);
+		var yEnd = eval(typeY);
 
-function restorePrevious() {
-	context.restore();
-}
+			context.strokeStyle = color;
+			context.beginPath();
+			context.moveTo(xStart, yStart);
+			context.lineTo(xEnd, yEnd);
+			context.stroke();
+	}
+
+	function coordinatesStopDrawing(e){
+		coordinatePaint = false;
+	}
+})

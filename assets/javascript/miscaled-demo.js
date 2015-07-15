@@ -1,20 +1,26 @@
-function miscaledStart(e){
-	miscaledDrawingPaint = true;
+$(function(){
+	var miscaledDrawingPaint = false;
+	var $canvas = $("#miscaled-canvas");
 
-	miscaledDrawingContext.beginPath();
-	miscaledDrawingContext.moveTo(e.offsetX, e.offsetY);
+	$canvas.on("mousedown", miscaledStart);
+	$canvas.on("mousemove", miscaledDraw);
+	$canvas.on("mouseup", miscaledStopDrawing);
 
-}
+	function miscaledStart(e){
+		miscaledDrawingPaint = true;
 
-function miscaledDraw(e){
-	if( miscaledDrawingPaint === true ){
-		miscaledDrawingContext.lineTo(e.offsetX, e.offsetY);
-		miscaledDrawingContext.stroke();
+		miscaledDrawingContext.beginPath();
+		miscaledDrawingContext.moveTo( (e.pageX - $(e.target).offset().left), (e.pageY - $(e.target).offset().top));
 	}
-}
 
-function miscaledStopDrawing(e){
-	miscaledDrawingPaint = false;
-	recordHistory();
-	redoArray = new Array();
-}
+	function miscaledDraw(e){
+		if( miscaledDrawingPaint === true ){
+			miscaledDrawingContext.lineTo( (e.pageX - $(e.target).offset().left), (e.pageY - $(e.target).offset().top));
+			miscaledDrawingContext.stroke();
+		}
+	}
+
+	function miscaledStopDrawing(e){
+		miscaledDrawingPaint = false;
+	}
+});
