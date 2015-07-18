@@ -6,12 +6,15 @@
 	<script type="text/javascript" src="assets/javascript/drawing-demo.js"></script>
 	<script type="text/javascript" src="assets/javascript/coordinates-demo.js"></script>
 	<script type="text/javascript" src="assets/javascript/miscaled-demo.js"></script>
+	<script type="text/javascript" src="assets/javascript/responsive_canvas.js"></script>
 	<link rel="stylesheet" type="text/css" href="assets/stylesheets/style.css">
 </head>
 	
 <body>
 	<div class="coordinates-demo hidden">
 		<button class="show-drawing-demo">Drawing</button>
+		<button class="show-responsive-canvas">Responsive Canvas</button>
+
 
 		<div class="legend">
 			<span id="offsetCoordinates">e.offsetX, e.offsetY</span>
@@ -30,6 +33,7 @@
 			<button class="eraser">eraser</button>
 			<button class="undo">undo</button>
 			<button class="redo">redo</button>
+			<button class="show-responsive-canvas">Responsive Canvas</button>
 		</div>
 		<table>
 			<thead>
@@ -49,8 +53,17 @@
 					<canvas id="miscaled-canvas"></canvas>
 				</td>
 			</tr>
-
 		</table>
+	</div>
 
+	<div id="responsive-canvas-demo" class="hidden">
+		<div>
+			<button class="show-coordinates-demo">Coordinates Demo</button>
+			<button class="eraser">eraser</button>
+			<button class="undo">undo</button>
+			<button class="redo">redo</button>
+			<button class="show-drawing-demo">Drawing</button>
+		</div>
+		<canvas id="resizable-canvas"></canvas>
 	</div>
 </body>

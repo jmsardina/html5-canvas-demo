@@ -1,5 +1,5 @@
 $(function setCanvases(){
-	// FOR COORDINATES DEMO 
+	// FOR COORDINATES DEMO
 	var mainLayer = document.getElementById("main-layer");
 	context = mainLayer.getContext("2d");
 
@@ -15,6 +15,9 @@ $(function setCanvases(){
 	var miscaledCanvas = document.getElementById("miscaled-canvas");
 	miscaledDrawingContext = miscaledCanvas.getContext("2d");
 
+	// RESIZABLE CANVAS
+	var resizableCanvas = document.getElementById("resizable-canvas");
+	resizableCanvasContext = resizableCanvas.getContext('2d');
 
 	// GRID FOR DRAWING DEMO
 	function setGrid(){

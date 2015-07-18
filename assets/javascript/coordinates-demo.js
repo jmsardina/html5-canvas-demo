@@ -1,11 +1,11 @@
 $(function(){
-	var coordinatePaint = false;
+	var paint = false;
 	$("#main-layer").on("mousedown", coordinatesStartDrawing);
 	$("#main-layer").on("mousemove", coordinatesDraw);
 	$("#main-layer").on("mouseup", coordinatesStopDrawing);
 
 	function coordinatesStartDrawing(e){
-		coordinatePaint = true;
+		paint = true;
 
 		// Record all starting points
 		offsetStart = [e.offsetX, e.offsetY];
@@ -19,7 +19,7 @@ $(function(){
 	}
 
 	function coordinatesDraw(e){
-		if (coordinatePaint === true) {
+		if (paint === true) {
 			coordinateStroke(e, "gridContext", "e.offsetX", "e.offsetY", "offsetStart", "black");
 			coordinateStroke(e, "gridContext", "e.clientX", "e.clientY", "clientStart", "green");
 			coordinateStroke(e, "gridContext", "e.pageX", "e.pageY", "pageStart", "red");
@@ -53,6 +53,6 @@ $(function(){
 	}
 
 	function coordinatesStopDrawing(e){
-		coordinatePaint = false;
+		paint = false;
 	}
 })

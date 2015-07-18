@@ -15,6 +15,14 @@
 	width: 600px;
 }
 
+#resizable-canvas {
+	border: 1px solid;
+}
+
+#responsive-canvas-demo {
+	width: 90%;
+	height: 90%;
+}
 /* END CANVASES */
 
 /* BEGIN OFFSET TOOLS */
